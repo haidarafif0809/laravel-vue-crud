@@ -1,3 +1,12 @@
+<style scoped>
+.pencarian {
+  color: red;
+ 
+  float: right;
+  padding-bottom: 10px;
+}
+</style>
+
 <template>
  <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -10,6 +19,9 @@
             <div class="panel-body">
 
                      <p> <router-link :to="{name: 'createCompany'}" class="btn btn-primary">Create Company</router-link></p>
+              <div class="pencarian">
+                  <input type="text" class="form-control" name="pencarian"placeholder="Pencarian"  v-model="pencarian" >
+              </div>
                 <table class="table table-bordered">
                     <thead>
                         <th>Name</th>
@@ -54,7 +66,8 @@ export default {
       companies: [],
       companiesData: {},
       url : window.location.origin + window.location.pathname,
-      loading: true
+      loading: true,
+      pencarian: ''
     }
   },
   mounted() {
@@ -62,6 +75,18 @@ export default {
     app.getCompanies();
 
   },
+  watch: {
+        // whenever question changes, this function will run
+        pencarian: function (q) {
+          if (q != '') {
+            this.searchCompany()  
+          }
+          else {
+            this.getCompanies()
+          }
+          
+        }
+      },
       methods: {
         getCompanies(page) {
           var app = this;
@@ -78,6 +103,21 @@ export default {
             console.log(resp);
             app.loading = false;
             alert("Could not load companies");
+          });
+        },
+        searchCompany(page){
+          var app = this;
+          if (typeof page === 'undefined') {
+            page = 1;
+          }
+          axios.get(app.url+'/search?q='+app.pencarian+'&page='+page)
+          .then(function (resp) {
+            app.companies = resp.data;
+            app.companiesData = [];
+          })
+          .catch(function (resp) {
+            console.log(resp);
+            alert("Could not load Company");
           });
         },
          alert(pesan) {

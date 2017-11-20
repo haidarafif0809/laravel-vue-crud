@@ -96,7 +96,13 @@ class CompanyController extends Controller
         else {
             return response(500);
         }
-        
+
+    }
+    public function search(Request $request)
+    {
+        //
+        $company =  Company::where('name','LIKE',"%$request->q%")->get();  
+        return $company;
     }
 
     /**
