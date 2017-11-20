@@ -98,7 +98,7 @@ export default {
             app.company = resp.data;
         })
         .catch(function () {
-            alert("Could not load your bank")
+            alert("Could not load your company")
         });
       }
 
