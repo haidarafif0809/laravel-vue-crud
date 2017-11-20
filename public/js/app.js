@@ -45609,7 +45609,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     alert: function alert(pesan) {
       this.$swal({
-        title: "Berhasil Menghapus Bank!",
+        title: "Berhasil Menghapus Company!",
         text: pesan,
         icon: "success"
       });
