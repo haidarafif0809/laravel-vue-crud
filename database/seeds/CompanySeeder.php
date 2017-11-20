@@ -13,7 +13,10 @@ class CompanySeeder extends Seeder
     {
         //
 
-    	Company::create(['name' => 'andaglos','jenis' => 1]);
-    	Company::create(['name' => 'andaglos 2','jenis' => 0]);
+        for ($i=0; $i < 250 ; $i++) { 
+            $jenis = $i % 2;
+            Company::create(['name' => 'andaglos '.$i,'jenis' => $jenis]);
+        }
+
     }
 }

@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('jenis')->default(0)->comment="1 = besar , 0 = kecil";
+            $table->integer('jenis')->default(0)->nullable()->comment="1 = besar , 0 = kecil";
             $table->timestamps();
         });
     }

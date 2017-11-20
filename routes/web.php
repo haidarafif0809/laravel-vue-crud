@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	return redirect(url('company'));
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('company', 'CompanyController');
+Route::resource('company', 'CompanyController',['except' => 'show']);
+Route::get('company/show-all','CompanyController@showAll');
 

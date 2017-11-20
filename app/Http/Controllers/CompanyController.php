@@ -50,10 +50,15 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showAll()
     {
         //
+        $company = Company::paginate(10);
+
+        return $company;
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -64,6 +69,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         //
+        return Company::find($id);
     }
 
     /**
@@ -84,7 +90,13 @@ class CompanyController extends Controller
             'name' =>$request->name,
             'jenis' =>$request->jenis
         ]);
-        return $company;
+        if ($company == true) {
+            return response(200);
+        }
+        else {
+            return response(500);
+        }
+        
     }
 
     /**

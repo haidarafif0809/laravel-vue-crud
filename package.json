@@ -16,9 +16,13 @@
         "jquery": "^3.1.1",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
-        "vue": "^2.1.10"
+        "vue": "^2.5.6"
     },
     "dependencies": {
-        "vue-router": "^3.0.1"
+        "laravel-vue-pagination": "^1.0.6",
+        "vue-router": "^3.0.1",
+        "vue-simple-spinner": "^1.2.8",
+        "vue-swal": "0.0.6",
+        "vue2-selectize": "^1.1.4"
     }
 }
